@@ -1,0 +1,60 @@
+242
+1832
+205
+771
+
+
+
+
+
+
+func isIsomorphic(s string, t string) bool {
+    if len(s) != len(t){
+        return false
+    }
+
+
+    // hashmaps to hold the characters
+    smap := make(map[rune]rune)
+    tmap := make(map[rune]rune)
+
+
+    for i:=0;i<len(s);i++{
+        sch:=s[i]
+        tch:=t[i]
+
+        if sIdx, ok := smap[sch];ok{
+            if sIdx != tch{
+                return false
+            }
+        }else{
+            smap[sch] = tch
+        }
+
+
+        if tIdx, ok := tmap[tch];ok{
+            if tIdx != sch{
+                return false
+            }
+        }else{
+            tmap[tch] = sch
+        }
+    }
+    return true
+}
+
+
+
+func numJewelsInStones(jewels string, stones string) int {
+    jMap := make(map[rune]bool)
+    for _, v := range jewels{
+        jMap[v] = true
+    }
+    count := 0
+    for _, v := range stones{
+        if jMap[v] == true{
+            count++
+        }
+    }
+    return count
+}
