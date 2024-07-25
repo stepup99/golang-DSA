@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"time"
 )
 
 func sender(ch chan int) {
@@ -22,7 +21,7 @@ func receiver(ch chan int) {
 func main() {
 	ch := make(chan int, 3)
 	go sender(ch)
-	time.Sleep(2 * time.Second)
+	// time.Sleep(2 * time.Second)
 	// go receiver(ch)
 	// time.Sleep(4 * time.Second)
 }
